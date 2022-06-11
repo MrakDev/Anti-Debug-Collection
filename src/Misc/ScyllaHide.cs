@@ -4,39 +4,13 @@ using System.Runtime.InteropServices;
 
 namespace Anti_Debug_Collection.Misc;
 
-public class ScyllaHide
+internal static class ScyllaHide
 {
     private delegate IntPtr PebAddress();
 
     [DllImport("kernel32.dll")]
     private static extern bool VirtualProtectEx(IntPtr hProcess, IntPtr lpAddress, UIntPtr dwSize,
         uint flNewProtect, out uint lpflOldProtect);
-
-    [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct _TEB
-    {
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
-        public IntPtr[] Reserved1;
-        public IntPtr ProcessEnvironmentBlock;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 399)]
-        public IntPtr[] Reserved2;
-        public fixed byte Reserved3[1952];
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
-        public IntPtr[] TlsSlots;
-        public fixed byte Reserved4[8];
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 26)]
-        public IntPtr[] Reserved5;
-        public IntPtr ReservedForOle;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public IntPtr[] Reserved6;
-        public IntPtr TlsExpansionSlots;
-
-        public static _TEB Create(IntPtr tebAddress)
-        {
-            _TEB teb = (_TEB)Marshal.PtrToStructure(tebAddress, typeof(_TEB));
-            return teb;
-        }
-    }
 
     public static unsafe bool CheckForPatchedMemory()
     {
@@ -63,12 +37,7 @@ public class ScyllaHide
                 return false;
 
             var tebAddress = Marshal.GetDelegateForFunctionPointer<PebAddress>(memoryAddress);
-
-            IntPtr gateAddress = IntPtr.Zero;
-            if (IntPtr.Size == 8)
-                gateAddress = Marshal.ReadIntPtr(tebAddress(), 256); // WOW64Reserved
-            else
-                gateAddress = Marshal.ReadIntPtr(tebAddress(), 192); // WOW32Reserved
+            var gateAddress = Marshal.ReadIntPtr(tebAddress(), IntPtr.Size == 8 ? 256 : 192);
 
             if (gateAddress == IntPtr.Zero)
                 return false;
