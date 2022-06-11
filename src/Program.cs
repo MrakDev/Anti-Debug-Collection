@@ -25,7 +25,7 @@ internal class Program
             Console.WriteLine("Misc:");
             Console.WriteLine($"\tParentProcess Trigger: {ParentProcess.IsExplorerParentProcess()}");
             Console.WriteLine($"\tRaiseExceptionTrick: {RaiseExceptionTrick.IsDebugged()}");
-            Console.WriteLine($"\tHeavenGate: {ScyllaHide.CheckForPatchedMemory()}");
+            Console.WriteLine($"\tHeavenGate (ScyllaHide): {ScyllaHide.CheckForPatchedMemory()}");
             
             Console.WriteLine("Object Handles:");
             Console.WriteLine($"\tCloseHandleTrick: {CloseHandleTrick.IsDebugged()}");
