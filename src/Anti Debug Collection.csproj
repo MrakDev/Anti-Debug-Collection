@@ -6,6 +6,7 @@
         <Platforms>AnyCPU;x64;x86</Platforms>
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
         <ApplicationManifest>app.manifest</ApplicationManifest>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
 </Project>
