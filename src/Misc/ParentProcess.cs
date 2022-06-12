@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Anti_Debug_Collection.Structs;
 
@@ -24,7 +25,7 @@ internal static class ParentProcess
         if (parentProcess.Id < 1)
             return false;
 
-        if (parentProcess.MainModule != null)
+        if (parentProcess.MainModule is {FileName: { }})
         {
             var file = new WinTrustFileInfo(parentProcess.MainModule.FileName);
             var trustData = new WinTrustData(file);
@@ -39,8 +40,17 @@ internal static class ParentProcess
                 trustData.Dispose();
                 file.Dispose();
             }
-        }
 
+            var fullFileName = parentProcess.MainModule.FileName;
+            var fileNameWithoutPath =
+                fullFileName[(fullFileName.LastIndexOf("\\", StringComparison.Ordinal) + 1)..];
+            var fileNameWithoutExtension =
+                fileNameWithoutPath[..fileNameWithoutPath.LastIndexOf(".", StringComparison.Ordinal)];
+            
+            if (parentProcess.ProcessName.ToLower() != fileNameWithoutExtension.ToLower())
+                return true;
+        }
+        
         return parentProcess.ProcessName.ToLower() is not ("explorer" or "cmd" or "powershell");
     }
 
