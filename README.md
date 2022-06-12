@@ -22,5 +22,5 @@ This repository contains a collection of anti-debugging tricks that I have colle
 - CloseHandle
 
 ## Reference and Credits
-[Anti-Debug Tricks](https://anti-debug.checkpoint.com/)
-[Ahora57](https://github.com/Ahora57)
+- [Anti-Debug Tricks](https://anti-debug.checkpoint.com/)
+- [Ahora57](https://github.com/Ahora57)
