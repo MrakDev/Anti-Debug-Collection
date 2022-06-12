@@ -99,7 +99,6 @@ public static class IsBadNumberObject
             pinnedArray.Free();
             VirtualFree(buffer, 0, 0x00008000);
             _ = NtClose(debugObject);
-            Console.WriteLine(maxNumberOfObjects);
             return maxNumberOfObjects < 1;
         }
 
