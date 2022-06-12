@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Anti_Debug_Collection.Misc;
+namespace Anti_Debug_Collection.Hook;
 
 internal static class ScyllaHide
 {

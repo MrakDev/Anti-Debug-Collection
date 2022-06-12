@@ -13,9 +13,14 @@ This repository contains a collection of anti-debugging tricks that I have colle
 #### Misc
 - ParentProcess
 - RaiseException
+
+### Hooks
 - HeavenGate (detect ScyllaHide)
+- IsBadHookNumberObject (detect ScyllaHide)
+
 #### Object Handles
 - CloseHandle
 
-## Reference
+## Reference and Credits
 [Anti-Debug Tricks](https://anti-debug.checkpoint.com/)
+[Ahora57](https://github.com/Ahora57)
