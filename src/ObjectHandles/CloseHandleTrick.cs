@@ -12,7 +12,10 @@ internal static class CloseHandleTrick
     {
         try
         {
-            CloseHandle((IntPtr)0xDEADBEEF);
+            if (IntPtr.Size == 8)
+                CloseHandle((IntPtr)0xDEADBEEF);
+            else
+                CloseHandle((IntPtr)0xDEADBEE);
             return false;
         }
         catch
