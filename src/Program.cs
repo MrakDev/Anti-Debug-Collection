@@ -4,6 +4,7 @@ using Anti_Debug_Collection.Flags.Manual;
 using Anti_Debug_Collection.Hook;
 using Anti_Debug_Collection.Misc;
 using Anti_Debug_Collection.ObjectHandles;
+using Anti_Debug_Collection.Syscall;
 
 namespace Anti_Debug_Collection;
 
@@ -33,6 +34,10 @@ internal class Program
 
             Console.WriteLine("Object Handles:");
             Console.WriteLine($"\tCloseHandleTrick: {CloseHandleTrick.IsDebugged()}");
+            
+            Console.WriteLine("Syscall:");
+            Console.WriteLine($"\tNtQueryInformationProcess: {NtQueryInformationProcess.IsDebuggerPresent()}");
+
             Console.ReadKey();
             Console.Clear();
         }
