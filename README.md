@@ -13,6 +13,7 @@ This repository contains a collection of anti-debugging tricks that I have colle
 #### Misc
 - ParentProcess
 - RaiseException
+- HideThreadsFromDebugger
 
 #### Hooks
 - HeavenGate (detect ScyllaHide)
@@ -27,3 +28,4 @@ This repository contains a collection of anti-debugging tricks that I have colle
 ## Reference and Credits
 - [Anti-Debug Tricks](https://anti-debug.checkpoint.com/)
 - [Ahora57](https://github.com/Ahora57)
+- [Trollicus](https://github.com/Trollicus)

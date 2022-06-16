@@ -39,7 +39,7 @@ internal class Program
             Console.WriteLine($"\tNtQueryInformationProcess: {NtQueryInformationProcess.IsDebuggerPresent()}");
 
             Console.WriteLine("HideThreadFromDebugger:");
-            HideThreadsFromDebugger();
+            HideThreadFromDebugger.HideThreadsFromDebugger();
             
             Console.ReadKey();
             Console.Clear();
