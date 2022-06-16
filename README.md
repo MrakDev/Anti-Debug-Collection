@@ -14,9 +14,12 @@ This repository contains a collection of anti-debugging tricks that I have colle
 - ParentProcess
 - RaiseException
 
-### Hooks
+#### Hooks
 - HeavenGate (detect ScyllaHide)
 - IsBadHookNumberObject (detect ScyllaHide)
+
+#### Syscall
+- NtQueryInformationProcess (detect ScyllaHide)
 
 #### Object Handles
 - CloseHandle
