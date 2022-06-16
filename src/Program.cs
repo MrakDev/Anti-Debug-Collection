@@ -38,6 +38,9 @@ internal class Program
             Console.WriteLine("Syscall:");
             Console.WriteLine($"\tNtQueryInformationProcess: {NtQueryInformationProcess.IsDebuggerPresent()}");
 
+            Console.WriteLine("HideThreadFromDebugger:");
+            HideThreadsFromDebugger();
+            
             Console.ReadKey();
             Console.Clear();
         }
