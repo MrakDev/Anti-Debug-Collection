@@ -42,7 +42,6 @@ internal class Program
 
             Console.WriteLine("HideThreadFromDebugger:");
             HideThreadsFromDebugger();
-
             Console.WriteLine("Timer:");
             Console.WriteLine($"\nIsDebuggerSlow: {TimerCheck()}");
             
