@@ -14,6 +14,7 @@ This repository contains a collection of anti-debugging tricks that I have colle
 - ParentProcess
 - RaiseException
 - HideThreadsFromDebugger
+- Timer
 
 #### Hooks
 - HeavenGate (detect ScyllaHide)
