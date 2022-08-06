@@ -21,6 +21,9 @@ public static class NtQueryInformationProcess
 
     public static unsafe bool IsDebuggerPresent()
     {
+        if (IntPtr.Size == 4)
+            return false;
+        
         uint debugFlag = 0;
         var safeByte = new byte[20];
 

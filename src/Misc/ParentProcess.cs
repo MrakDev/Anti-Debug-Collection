@@ -20,12 +20,15 @@ internal static class ParentProcess
 
     public static bool IsExplorerParentProcess()
     {
+        if (IntPtr.Size == 4)
+            return false;
+
         var actualProcess = Process.GetCurrentProcess();
         var parentProcess = ParentProcesses(actualProcess.Handle);
         if (parentProcess.Id < 1)
             return false;
 
-        if (parentProcess.MainModule is {FileName: { }})
+        if (parentProcess.MainModule is { FileName: { } })
         {
             var file = new WinTrustFileInfo(parentProcess.MainModule.FileName);
             var trustData = new WinTrustData(file);
@@ -46,11 +49,11 @@ internal static class ParentProcess
                 fullFileName[(fullFileName.LastIndexOf("\\", StringComparison.Ordinal) + 1)..];
             var fileNameWithoutExtension =
                 fileNameWithoutPath[..fileNameWithoutPath.LastIndexOf(".", StringComparison.Ordinal)];
-            
+
             if (parentProcess.ProcessName.ToLower() != fileNameWithoutExtension.ToLower())
                 return true;
         }
-        
+
         return parentProcess.ProcessName.ToLower() is not ("explorer" or "cmd" or "powershell");
     }
 
