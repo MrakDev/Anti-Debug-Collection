@@ -5,7 +5,6 @@ using Anti_Debug_Collection.Hook;
 using Anti_Debug_Collection.Misc;
 using Anti_Debug_Collection.ObjectHandles;
 using Anti_Debug_Collection.Syscall;
-using static Anti_Debug_Collection.Misc.HideThreadFromDebugger;
 using static Anti_Debug_Collection.Misc.Timer;
 
 namespace Anti_Debug_Collection;
@@ -40,8 +39,6 @@ internal class Program
             Console.WriteLine("Syscall:");
             Console.WriteLine($"\tNtQueryInformationProcess: {NtQueryInformationProcess.IsDebuggerPresent()}");
 
-            Console.WriteLine("HideThreadFromDebugger:");
-            HideThreadsFromDebugger();
             Console.WriteLine("Timer:");
             Console.WriteLine($"\nIsDebuggerSlow: {TimerCheck()}");
             

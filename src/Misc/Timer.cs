@@ -3,17 +3,17 @@ using System.Threading;
 
 namespace Anti_Debug_Collection.Misc;
 
-public class Timer
+public static class Timer
 {
-    public static bool TimerCheck() /* If you want to detect debugger attach, loop it in new thread */
+    public static bool TimerCheck()
     {
         return Time();
     }
-    private static bool Time() /* 300 IQ check, abuse the loading instructions */
+    private static bool Time()
     {
-        long tickCount = Environment.TickCount;
+        var tickCount = Environment.TickCount;
         Thread.Sleep(500);
-        long tickCount2 = Environment.TickCount;
+        var tickCount2 = Environment.TickCount;
         return tickCount2 - tickCount < 500L;
     }
 }
